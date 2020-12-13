@@ -107,7 +107,7 @@ export class UndoStack {
     //The format for each operation should be:
     //CallAndAdd{ () => {
     //  addActionIndex()
-    //  ...remaking code here...
+    //  ...remaining code here...
     //}
     //}
     //PushUndoKeypoint
