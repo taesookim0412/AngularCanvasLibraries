@@ -73,13 +73,7 @@ export class UndoStack {
 
 
 
-    //Replicate the exact actions of a manual operation
-    //The format for each operation should be:
-    //CallAndAdd{
-    //  addActionIndex()
-    //  function()
-    //}
-    //PushUndoKeypoint
+
     isLastPriorityUndoKeypointEntryNotLast(targetIndex: number){
         let offset = 0;
         if (this.priorityUndoStack.length > 1 && targetIndex + 1 == this.priorityUndoStack[this.priorityUndoStack.length - 1]){
@@ -109,6 +103,14 @@ export class UndoStack {
         }
     }
 
+    //Replicate the exact actions of a manual operation
+    //The format for each operation should be:
+    //CallAndAdd{ () => {
+    //  addActionIndex()
+    //  ...remaking code here...
+    //}
+    //}
+    //PushUndoKeypoint
     undo() {
         let targetIndex = this.keypointsUndoStack[this.keypointsUndoStack.length - 1]
         if (targetIndex != 0) {
